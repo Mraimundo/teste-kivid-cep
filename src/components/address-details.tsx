@@ -6,7 +6,7 @@ export function AddressDetails() {
   return (
     <>
       {address && (
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col lg:flex-row items-center gap-2">
           <p className="text-gray-800">Logradouro: {address.logradouro}</p>
           <p className="text-gray-800">
             Complemento: {address.complemento || "N/A"}

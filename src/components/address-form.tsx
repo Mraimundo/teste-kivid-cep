@@ -37,7 +37,7 @@ export function AddressForm() {
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="w-full flex items-end justify-center space-x-6"
+      className="w-full flex items-center lg:items-end flex-col gap-6 lg:flex-row justify-center lg:space-x-6"
     >
       <div className="space-y-2">
         <label className="text-sm font-medium block" htmlFor="cep">
@@ -59,7 +59,7 @@ export function AddressForm() {
         <Dialog.Trigger asChild>
           <button
             disabled={isLoading}
-            className="flex items-center px-3 py-2.5 border-2 hover:border-app_green_500  border-app_green_300 hover:text-app_green_500 transition-colors text-app_green_300 font-bold cursor-pointer rounded-md  bg-transparent"
+            className="w-full lg:flex-1 flex items-center gap-2 px-10 lg:px-3 py-2.5 border-2 hover:border-app_green_500  border-app_green_300 hover:text-app_green_500 transition-colors text-app_green_300 font-bold cursor-pointer rounded-md  bg-transparent"
             type="submit"
           >
             {isLoading && <Loader2 className="size-3 animate-spin" />}
@@ -69,7 +69,7 @@ export function AddressForm() {
 
         <Dialog.Portal>
           <Dialog.Overlay className="fixed w-screen h-screen inset-0 bg-black/70" />
-          <Dialog.Content className="min-w-[40.625rem] fixed -translate-x-2/4 -translate-y-2/4 px-12 py-10 rounded-md left-2/4 top-2/4 bg-white">
+          <Dialog.Content className="lg:min-w-[42.5rem] min-w-[20rem]  fixed -translate-x-2/4 -translate-y-2/4 px-6 lg:px-12 py-10 rounded-md left-2/4 top-2/4 bg-white">
             <Dialog.Close className="absolute leading-[0] cursor-pointer text-gray-800 border-0 right-6 top-6 bg-transparen">
               <IconClose />
             </Dialog.Close>
