@@ -4,8 +4,8 @@ Esse projeto foi desenvolvido para demostrar as minhas habilidades técnicas em 
 O foco deste teste é desenvolver uma aplicação utilizando um CEP para obter o endereço completo via API dos Correios (ViaCep ou BrasilAPI
 
 ## 🎨 Layout
-
-![todos](https://github.com/Mraimundo/teste-santander/assets/53385345/4f01670c-81f6-49c1-b42d-0bd636b97684)
+![teste-kivid](https://github.com/Mraimundo/teste-kivid-cep/assets/53385345/51296916-4e18-45ea-a831-7d571723cc69)
+![kivid-2](https://github.com/Mraimundo/teste-kivid-cep/assets/53385345/40b215fd-9317-462e-b377-e96a0896f500)
 
 Deploy do projeto: [acessar](https://teste-kivid-cep.vercel.app/)
 
@@ -15,12 +15,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Typescript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
-- [Taillwind]()
-- [React-hook-form]()
-- [Zod]()
-- [React-router-dom]()
-- [sonner]()
-- [axios]()
+- [Taillwind](https://tailwindcss.com/docs/installation)
+- [React-hook-form](https://react-hook-form.com/get-started)
+- [Zod](https://zod.dev/?id=installation)
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+- [sonner](https://sonner.emilkowal.ski/getting-started)
+- [axios](https://www.npmjs.com/package/axios)
 
 ### Pré-requisitos
 
@@ -34,11 +34,11 @@ O **README** mostra como executar as aplicação.
 
 ```bash
 # Clone este repositório
-$ [SSH] git clone git@github.com:Mraimundo/desafio-react-frontend-junior-2024.git
-$ [HTTPS] git clone https://github.com/Mraimundo/desafio-react-frontend-junior-2024.git
+$ [SSH] git clone git@github.com:Mraimundo/teste-kivid-cep.git
+$ [HTTPS] git clone https://github.com/Mraimundo/teste-kivid-cep.git
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd desafio-react-frontend-junior-2024
+$ cd teste-kivid-cep
 
 Portanto depois de clonar o repositório digite em seu terminal:
 # Instale as dependências
