@@ -1,0 +1,86 @@
+import * as Dialog from "@radix-ui/react-dialog";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Loader2 } from "lucide-react";
+import { useAddress } from "../hooks";
+
+import { Loading } from "./loading";
+import { AddressDetails } from "./address-details";
+import { IconClose } from "./icon-close";
+
+const addressSchema = z.object({
+  cep: z
+    .string()
+    .length(9, { message: "CEP deve ter 9 dígitos" })
+    .regex(/^\d{5}-\d{3}$/, {
+      message: "CEP inválido, por favor digite o CEP no formato (XXXXX-XXX)",
+    }),
+});
+
+type AddressFormData = z.infer<typeof addressSchema>;
+
+export function AddressForm() {
+  const { onSubmit, isLoading } = useAddress();
+
+  const { register, handleSubmit, reset, formState } = useForm<AddressFormData>(
+    {
+      resolver: zodResolver(addressSchema),
+    }
+  );
+
+  const handleFormSubmit = async (data: AddressFormData) => {
+    await onSubmit(data);
+    reset();
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      className="w-full flex items-end justify-center space-x-6"
+    >
+      <div className="space-y-2">
+        <label className="text-sm font-medium block" htmlFor="cep">
+          CEP
+        </label>
+        <input
+          type="text"
+          placeholder="Digite seu CEP"
+          {...register("cep")}
+          className="border border-zinc-800 rounded-lg px-12 py-3 bg-zinc-800/50 w-full text-sm"
+        />
+        {formState.errors?.cep && (
+          <p className="text-sm text-red-400">
+            {formState.errors?.cep?.message}
+          </p>
+        )}
+      </div>
+      <Dialog.Root>
+        <Dialog.Trigger asChild>
+          <button
+            disabled={isLoading}
+            className="flex items-center px-3 py-2.5 border-2 hover:border-app_green_500  border-app_green_300 hover:text-app_green_500 transition-colors text-app_green_300 font-bold cursor-pointer rounded-md  bg-transparent"
+            type="submit"
+          >
+            {isLoading && <Loader2 className="size-3 animate-spin" />}
+            Buscar Endereço
+          </button>
+        </Dialog.Trigger>
+
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed w-screen h-screen inset-0 bg-black/70" />
+          <Dialog.Content className="min-w-[40.625rem] fixed -translate-x-2/4 -translate-y-2/4 px-12 py-10 rounded-md left-2/4 top-2/4 bg-white">
+            <Dialog.Close className="absolute leading-[0] cursor-pointer text-gray-800 border-0 right-6 top-6 bg-transparen">
+              <IconClose />
+            </Dialog.Close>
+            <Dialog.Title className="text-gray-800 mb-10 text-xl font-bold">
+              Detalhes do Cep
+            </Dialog.Title>
+            {!isLoading && <AddressDetails />}
+            {isLoading && <Loading />}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </form>
+  );
+}
