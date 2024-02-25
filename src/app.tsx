@@ -8,7 +8,7 @@ export function App() {
       <Header />
       <main className="w-full max-w-screen-xl h-screen flex items-center justify-center flex-col mx-auto p-6">
         <div className="pb-10 lg:pb-20 space-y-4">
-          <h1 className="font-bold">Endereço completo via CEP</h1>
+          <h1 className="text-lg font-bold">Endereço completo via CEP</h1>
           <p className="font-medium">
             Consulte o endereço completo da sua região, adicionando o CEP
             abaixo:
