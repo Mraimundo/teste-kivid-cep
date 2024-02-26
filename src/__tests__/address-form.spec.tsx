@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import { AddressForm } from "../components/address-form";
 
@@ -12,8 +13,9 @@ jest.mock("../hooks", () => ({
 describe("AddressForm", () => {
   it("should render correctly", () => {
     const { getByPlaceholderText, getByText } = render(<AddressForm />);
-
+    // @ts-ignore
     expect(getByPlaceholderText("Digite seu CEP")).toBeInTheDocument();
+    // @ts-ignore
     expect(getByText("Buscar Endereço")).toBeInTheDocument();
   });
 
@@ -27,6 +29,7 @@ describe("AddressForm", () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
+      // @ts-ignore
       expect(getByText("CEP deve ter 9 dígitos")).toBeInTheDocument();
     });
   });

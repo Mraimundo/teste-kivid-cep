@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { render } from "@testing-library/react";
 import { AddressDetails } from "../components/address-details";
 
@@ -17,11 +18,15 @@ jest.mock("../hooks", () => ({
 describe("AddressDetails component", () => {
   it("should renders address details correctly", () => {
     const { getByText } = render(<AddressDetails />);
-
+    // @ts-ignore
     expect(getByText("Logradouro: Rua Teste")).toBeInTheDocument();
+    // @ts-ignore
     expect(getByText("Complemento: Complemento Teste")).toBeInTheDocument();
+    // @ts-ignore
     expect(getByText("Bairro: Bairro Teste")).toBeInTheDocument();
+    // @ts-ignore
     expect(getByText("Localidade: Localidade Teste")).toBeInTheDocument();
+    // @ts-ignore
     expect(getByText("UF: UF Teste")).toBeInTheDocument();
   });
 });
