@@ -19,8 +19,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React-hook-form](https://react-hook-form.com/get-started)
 - [Zod](https://zod.dev/?id=installation)
 - [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
-- [sonner](https://sonner.emilkowal.ski/getting-started)
-- [axios](https://www.npmjs.com/package/axios)
+- [Sonner](https://sonner.emilkowal.ski/getting-started)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Jest](https://jestjs.io/docs/getting-started)
+- [Testing Library](https://testing-library.com/docs/user-event/intro/)
+- 
 
 ### Pré-requisitos
 
@@ -57,7 +60,7 @@ $ em seguida [localhost:3000](http://localhost:3000) em seu navegador para visua
 ### Testes Unitários
 
 - Os testes são organizados usando a biblioteca Jest e React Testing Library.
-- Para executar os testes, utilize o comando `yarn test`.
+- Para executar os testes, utilize o comando `npm run test ou yarn test`.
 
 ```
 
