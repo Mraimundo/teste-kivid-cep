@@ -62,7 +62,12 @@ export function AddressForm() {
             className="w-full lg:flex-1 flex items-center gap-2 px-10 lg:px-3 py-2.5 border-2 hover:border-app_green_500  border-app_green_300 hover:text-app_green_500 transition-colors text-app_green_300 font-bold cursor-pointer rounded-md  bg-transparent"
             type="submit"
           >
-            {isLoading && <Loader2 className="size-3 animate-spin" />}
+            {isLoading && (
+              <Loader2
+                className="size-3 animate-spin"
+                data-testid="loading-spinner"
+              />
+            )}
             Buscar Endereço
           </button>
         </Dialog.Trigger>
