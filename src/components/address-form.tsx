@@ -8,6 +8,7 @@ import { useAddress } from "../hooks";
 import { Loading } from "./loading";
 import { AddressDetails } from "./address-details";
 import { IconClose } from "./icon-close";
+import { cn } from "../lib/utils";
 
 const addressSchema = z.object({
   cep: z
@@ -30,6 +31,9 @@ export function AddressForm() {
   );
 
   const handleFormSubmit = async (data: AddressFormData) => {
+    if (!data.cep || formState.errors?.cep?.message) {
+      return;
+    }
     await onSubmit(data);
     reset();
   };
@@ -47,18 +51,17 @@ export function AddressForm() {
           type="text"
           placeholder="Digite seu CEP"
           {...register("cep")}
-          className="border border-zinc-800 rounded-lg px-12 py-3 bg-zinc-800/50 w-full text-sm"
+          className={cn(
+            "border-2 border-zinc-800 focus:border-app_green_300 focus:ring-app_green_300 focus:outline-none rounded-lg px-12 py-3 bg-zinc-800/50 w-full text-sm",
+            formState.errors?.cep &&
+              "focus:border-red-400 focus:ring-red-400 border-2 focus:outline-none"
+          )}
         />
-        {formState.errors?.cep && (
-          <p className="text-sm text-red-400">
-            {formState.errors?.cep?.message}
-          </p>
-        )}
       </div>
       <Dialog.Root>
         <Dialog.Trigger asChild>
           <button
-            disabled={isLoading}
+            disabled={isLoading || formState.isSubmitting || !formState.isValid}
             className="w-full lg:flex-1 flex items-center gap-2 px-10 lg:px-3 py-2.5 border-2 hover:border-app_green_500  border-app_green_300 hover:text-app_green_500 transition-colors text-app_green_300 font-bold cursor-pointer rounded-md  bg-transparent"
             type="submit"
           >
@@ -71,7 +74,6 @@ export function AddressForm() {
             Buscar Endereço
           </button>
         </Dialog.Trigger>
-
         <Dialog.Portal>
           <Dialog.Overlay className="fixed w-screen h-screen inset-0 bg-black/70" />
           <Dialog.Content className="lg:min-w-[42.5rem] min-w-[20rem]  fixed -translate-x-2/4 -translate-y-2/4 px-6 lg:px-12 py-10 rounded-md left-2/4 top-2/4 bg-white">

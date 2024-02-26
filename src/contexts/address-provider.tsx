@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
 
 import {
   AddressFormData,
@@ -8,7 +9,6 @@ import {
   AddressContext,
 } from "./address-context";
 import { api } from "../lib/axios";
-import { toast } from "sonner";
 
 type AddressProviderProps = {
   children: React.ReactNode;
